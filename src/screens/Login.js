@@ -1,12 +1,14 @@
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
-
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import Video from 'react-native-video';
+import SmallVideo from '../../small3.mp4';
 
 export default function Login() {
 
   return (
 
     <View style={styles.container}>
+      <Video source={SmallVideo} style={{ width: 300, height: 300 }} playWhenInactive={true} controls={true}/>
       <Text style={styles.title}>Get Your Data Dividend</Text>
       <Text style={styles.paragraph}>Ozone is the way the Internet should be. Get free tools to make money from your data in just a few clicks.</Text>
       <TouchableOpacity style={styles.button} onPress={() => alert('login')} >
