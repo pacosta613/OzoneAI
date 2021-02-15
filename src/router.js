@@ -1,32 +1,27 @@
-import { StackNavigator, TabNavigator } from "react-navigation";
+import { NavigationContainer }      from '@react-navigation/native'
+import { createStackNavigator }     from '@react-navigation/stack'
+import { createAppContainer }       from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import Login    from "./screens/Login";
 import Welcome  from "./screens/Welcome";
-import Profile  from "./screens/Profile"
+import Profile  from "./screens/Profile";
+import Earn     from "./screens/Earn";
 
-export const SignedOut = StackNavigator({
+const Stack = createStackNavigator();
 
-  Login: {
-    screen: Login,
-    navigationOptions: {
-      title: "Login"
-    }
-  }
+function MainStackNavigator() {
+    return (
+
+        <Stack.Navigator>
+          <Stack.Screen name="Welcome" component={Welcome} />
+        </Stack.Navigator>
+    )
+}
+
+const TabNavigator = createBottomTabNavigator({
+  Earn: Earn,
+  Profile: Profile,
 });
 
-export const SignedIn = TabNavigator({
-  Earn: {
-    screen: Earn,
-    navigationOptions: {
-      tabBarLabel: "Earn",
-      
-    }
-  },
-  Profile: {
-    screen: Profile,
-    navigationOptions: {
-      tabBarLabel: "Profile",
-      
-    }
-  }
-});
+export default createAppContainer(TabNavigator);

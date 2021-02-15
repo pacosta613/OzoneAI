@@ -40,6 +40,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log("im right here")
     isLogin()
       .then(res => this.setState({ isLogin: res, checkedLogin: true }))
       .catch(err => alert("An error occurred"));
