@@ -5,12 +5,11 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 export default function Login() {
 
   return (
+
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => alert('login')}
-      >
+      <Text style={styles.title}>Get Your Data Dividend</Text>
+      <Text style={styles.paragraph}>Ozone is the way the Internet should be. Get free tools to make money from your data in just a few clicks.</Text>
+      <TouchableOpacity style={styles.button} onPress={() => alert('login')} >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
     </View>
@@ -22,29 +21,39 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffe2ff'
+    backgroundColor: '#99A4FB'
   },
   title: {
     marginTop: 20,
     marginBottom: 30,
-    fontSize: 28,
+    fontSize: 45,
+    fontWeight: '800',
+    color: '#ffffff'
+  },
+  paragraph: {
+    marginRight: 30,
+    marginLeft: 30,
+    marginBottom: 20,
+    fontSize: 21,
     fontWeight: '500',
-    color: '#7f78d2'
+    color: '#ffffff'
   },
   button: {
     flexDirection: 'row',
-    borderRadius: 30,
+    borderRadius: 35,
     marginTop: 10,
     marginBottom: 10,
-    width: 300,
+    width: 160,
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#481380'
+    backgroundColor: '#5264F9',
+    
   },
   buttonText: {
-    color: '#ffe2ff',
-    fontSize: 24,
+    color: '#ffffff',
+    fontSize: 20,
+    fontWeight: '600',
     marginRight: 5
   }
 })
