@@ -1,4 +1,4 @@
-export const onSignIn = () => {
+export const onLogin = () => {
   console.log("login");
 };
 
