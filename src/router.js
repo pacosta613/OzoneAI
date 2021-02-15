@@ -19,18 +19,14 @@ export const SignedIn = TabNavigator({
     screen: Earn,
     navigationOptions: {
       tabBarLabel: "Earn",
-      tabBarIcon: ({ tintColor }) => (
-        <FontAwesome name="home" size={30} color={tintColor} />
-      )
+      
     }
   },
   Profile: {
     screen: Profile,
     navigationOptions: {
       tabBarLabel: "Profile",
-      tabBarIcon: ({ tintColor }) => (
-        <FontAwesome name="user" size={30} color={tintColor} />
-      )
+      
     }
   }
 });

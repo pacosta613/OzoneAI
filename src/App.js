@@ -26,15 +26,33 @@ import {
 
 import Welcome from "./screens/Welcome";
 import Login    from "./screens/Login";
+import { isLogin } from "./auth";
+import { createRootNavigator } from "./router";
 
-const App: () => React$Node = () => {
-  return (
-    <Login />
-  );
-};
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-const styles = StyleSheet.create({
-  
-});
+    this.state = {
+      isLogin: false,
+      checkedLogin: false
+    };
+  }
 
-export default App;
+  componentDidMount() {
+    isLogin()
+      .then(res => this.setState({ isLogin: res, checkedLogin: true }))
+      .catch(err => alert("An error occurred"));
+  }
+
+  render() {
+    const { checkedLogin, isLogin } = this.state;
+
+    if (!checkedLogin) {
+      return null;
+    }
+
+    const Layout = createRootNavigator(isLogin);
+    return <Login />;
+  }
+}
