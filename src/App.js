@@ -26,6 +26,7 @@ import {
 
 import Welcome from "./screens/Welcome";
 import Login    from "./screens/Login";
+import Earn     from "./screens/Earn";
 import { isLogin } from "./auth";
 import { createRootNavigator } from "./router";
 
@@ -40,20 +41,20 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("im right here")
+
     isLogin()
       .then(res => this.setState({ isLogin: res, checkedLogin: true }))
-      .catch(err => alert("An error occurred"));
+      .catch(err => console.log("An error occurred"));
   }
 
   render() {
     const { checkedLogin, isLogin } = this.state;
 
     if (!checkedLogin) {
-      return null;
+      return <Welcome />;
     }
 
-    const Layout = createRootNavigator(isLogin);
-    return <Login />;
+    // const Layout = createRootNavigator(isLogin);
+    return <Earn />;
   }
 }
