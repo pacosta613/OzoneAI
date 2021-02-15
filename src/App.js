@@ -24,11 +24,19 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Welcome from "./screens/Welcome";
-import Login    from "./screens/Login";
-import Earn     from "./screens/Earn";
-import { isLogin } from "./auth";
-import { createRootNavigator } from "./router";
+import Welcome                        from "./screens/Welcome";
+import Login                          from "./screens/Login";
+import Earn                           from "./screens/Earn";
+import { isLogin }                    from "./action/api";
+import TabBarNav                      from "./navigations/TabBarNav";
+import MainStackNavigator             from "../src/navigations/MainStackNavigator";
+import { NavigationContainer }        from '@react-navigation/native'
+import { Provider }                     from 'react-redux';
+import promise                          from 'redux-promise';
+import { createStore, applyMiddleware } from 'redux';
+import store                            from './reducers/index'
+
+const createStoreWithMiddleware         = applyMiddleware(promise)(createStore)(store);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -42,19 +50,18 @@ export default class App extends React.Component {
 
   componentDidMount() {
 
-    isLogin()
-      .then(res => this.setState({ isLogin: res, checkedLogin: true }))
-      .catch(err => console.log("An error occurred"));
+    // isLogin()
+    //   .then(res => this.setState({ isLogin: res, checkedLogin: true }))
+    //   .catch(err => console.log("An error occurred"));
   }
 
   render() {
     const { checkedLogin, isLogin } = this.state;
 
-    if (!checkedLogin) {
-      return <Welcome />;
-    }
+    // if (!checkedLogin) {
+      return ( <Provider store={createStoreWithMiddleware}><MainStackNavigator /></Provider> );
+    // }
 
-    // const Layout = createRootNavigator(isLogin);
-    return <Earn />;
+    // return ( <Provider store={createStoreWithMiddleware}><NavigationContainer><TabBarNav /></NavigationContainer></Provider> );
   }
 }

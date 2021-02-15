@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, StyleSheet, Button, TouchableOpacity, Alert  } from "react-native";
-import { onLogin } from "../auth";
+import { connect }                              from 'react-redux';
+import { bindActionCreators }                   from "redux";
+import { loginFunc }                                from '../action/api'
+// import { AsyncStorage }                     from '@react-native-community/async-storage';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     
@@ -12,10 +15,32 @@ export default class Login extends Component {
     };
   } 
 
-  onLogin() {
-    const { email, password } = this.state;
+  // static navigationOptions = {
+  //   header: 'none'         
+  // };
 
-    Alert.alert('Credentials', `${email} + ${password}`);
+  onLogin() {
+    const { email, password }   = this.state;
+    const { navigate }          = this.props.navigation;
+    const usrObj                = { email, password }
+    console.log("usrObj <---?>" , this.props)
+
+    this.props.loginFunc(usrObj)
+    .then( res => {
+      console.log("res <--> after", this.props)
+      console.log("res <--> after", res.payload.auth)
+        if ( this.props.token != null ) {
+
+            this.props.navigation.navigate('Earn');
+        }
+    })
+
+    // if ( this.props.token != null ) {
+      // console.log("AsyncStorage ", AsyncStorage)
+      // AsyncStorage.setItem('access-token', this.props.token);
+      // this.props.navigation.navigate('Earn')
+    // }
+
   }
 
   render() {
@@ -43,6 +68,21 @@ export default class Login extends Component {
     )
   }
 };
+
+function mapStateToProps(state) {
+
+  const { auth, token } = state.api
+  return {
+    token, auth
+    // token: state.authentication.token, 
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ loginFunc }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {

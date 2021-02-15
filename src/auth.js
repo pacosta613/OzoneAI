@@ -2,7 +2,7 @@ import { AsyncStorage } from "@react-native-community/async-storage";
 
 export const ACCESS_TOKEN = "access-token";
 
-export const onLogin = () => AsyncStorage.setItem(ACCESS_TOKEN, "true");
+export const onLogin = () => AsyncStorage.setItem(ACCESS_TOKEN);
 
 export const onSignOut = () => AsyncStorage.removeItem(ACCESS_TOKEN);
 

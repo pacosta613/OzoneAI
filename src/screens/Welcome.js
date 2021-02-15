@@ -1,21 +1,32 @@
-import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
+import React, { Component } from 'react'
+import { View, StyleSheet, Text, TouchableOpacity, TextInput, Button } from 'react-native';
 import Video from 'react-native-video';
 import SmallVideo from '../../small3.mp4';
 
-export default function Welcome() {
+export default class Welcome extends Component {
+  // static navigationOptions = {
+  //   header: 'none'         
+  // };
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      
+    };
+  } 
+  render() {
+    return (
 
-  return (
-
-    <View style={styles.container}>
-      <Video source={SmallVideo} style={{ width: 300, height: 300 }} playWhenInactive={true} controls={true}/>
-      <Text style={styles.title}>Get Your Data Dividend</Text>
-      <Text style={styles.paragraph}>Ozone is the way the Internet should be. Get free tools to make money from your data in just a few clicks.</Text>
-      <TouchableOpacity style={styles.button} onPress={() => alert('login')} >
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-    </View>
-  )
+      <View style={styles.container}>
+        <Video source={SmallVideo} style={{ width: 300, height: 300 }} playWhenInactive={true} controls={true}/>
+        <Text style={styles.title}>Get Your Data Dividend</Text>
+        <Text style={styles.paragraph}>Ozone is the way the Internet should be. Get free tools to make money from your data in just a few clicks.</Text>
+        <TouchableOpacity  style={styles.button} onPress={() => this.props.navigation.navigate('Login')} >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
