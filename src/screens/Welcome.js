@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
 import Video from 'react-native-video';
 import SmallVideo from '../../small3.mp4';
 
-export default function Login() {
+export default function Welcome() {
 
   return (
 
