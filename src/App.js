@@ -25,10 +25,11 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import Welcome from "./screens/Welcome";
+import Login    from "./screens/Login";
 
 const App: () => React$Node = () => {
   return (
-    <Welcome />
+    <Login />
   );
 };
 

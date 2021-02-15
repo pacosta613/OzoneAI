@@ -1,22 +1,32 @@
 import React from "react";
-import { View } from "react-native";
-import { Card, Button, FormLabel, FormInput } from "react-native-elements";
+import { View, TextInput, Text, StyleSheet } from "react-native";
 import { onLogin } from "../auth";
 
-export default () => (
-  <View style={{ paddingVertical: 20 }}>
-    <Card title="SIGN IN">
-      <FormLabel>Email</FormLabel>
-      <FormInput placeholder="Email address..." />
-      <FormLabel>Password</FormLabel>
-      <FormInput secureTextEntry placeholder="Password..." />
+export default function Login() {
+  return (
+    <View style={styles.container}>
+      <Text> Login Form </Text>
+        <View>
+          <TextInput placeholder="Enter Email" />
+          <TextInput
+            secureTextEntry={true}
+            placeholder="Enter Password"
+          />
+        </View>
+    </View>
+  )
+};
 
-      <Button
-        buttonStyle={{ marginTop: 20 }}
-        backgroundColor="#03A9F4"
-        title="Login"
-        onPress={() => onLogin()}
-      />
-    </Card>
-  </View>
-);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ebebeb'
+  },
+  text: {
+    color: '#101010',
+    fontSize: 24,
+    fontWeight: 'bold'
+  }
+})
