@@ -24,14 +24,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Login from "./screens/Login";
+
 const App: () => React$Node = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Text> yerrr </Text>
-      </SafeAreaView>
-    </>
+    <Login />
   );
 };
 
