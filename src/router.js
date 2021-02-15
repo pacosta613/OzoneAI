@@ -1,6 +1,8 @@
-import { StackNavigator } from "react-navigation";
+import { StackNavigator, TabNavigator } from "react-navigation";
 
-import Login from "./screens/Login";
+import Login    from "./screens/Login";
+import Welcome  from "./screens/Welcome";
+import Profile  from "./screens/Profile"
 
 export const SignedOut = StackNavigator({
 
